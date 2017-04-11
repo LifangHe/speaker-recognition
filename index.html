@@ -1,0 +1,109 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.78 [en] (X11; U; Linux 2.4.7-10 i686) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#52188C" alink="#FF0000">
+
+<blockquote>
+<center>
+<hr WIDTH="100%"></center>
+<p>
+<center><table BORDER=2 COLS=1 WIDTH="60%" BGCOLOR="#FFFFCC" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>
+<center><b><font size=+4>Machine Learning</font></b>
+<p><b><font size=+3>Artificial Neural Networks</font></b></center>
+</td>
+</tr>
+</table></center>
+
+<div align=right>Hector-Fabio Satizabal and Andres Perez-Uribe</div>
+
+<hr WIDTH="100%">
+<br>&nbsp;
+<center><table BORDER COLS=2 WIDTH="80%" NOSAVE >
+<tr NOSAVE>
+<td width=50% NOSAVE>
+<center><img SRC="yellowbrain.jpg" height=200 width=251></center>
+</td>
+
+<td>
+<center><b>"The 1990s were named the Decade of the Brain, but there will never be a Decade of the Pancreas."
+<p>S. Pinker</center>
+</td>
+</tr>
+</table></center>
+<p>
+<h2 id="speaker">5. Speaker recognition</h2>
+You will be provided with a database of vowels spoken by men, women and
+children (of 3, 5 and 7 years old).  The task will be to train artificial neural networks to
+recognize the speaker having produced the given sounds and evaluate
+its performance (e.g., by crossvalidation).
+<p>
+The file <a href="vowels.zip">vowels.zip</a> contains the sounds in
+WAV format. They have been collected by the team of <a
+href="http://www.utdallas.edu/~assmann/KIDVOW/">Prof. Peter
+Assmann</a> of the School of Behavioral and Brain Sciences of Texas
+University in Dallas. You will also find a set of synthetic sounds
+corresponding to each vowel and each speaker. Please read the file
+0_README.txt for more information.
+<p>
+Typical features of speech are timbre, pitch, intonation and tempo. in
+this practical work we will use the Mel-Frequency Cepstrum
+Coefficients (MFCC) which have been found to be very useful for speech
+recognition. In sound processing, the mel-frequency cepstrum (MFC) is
+a representation of the short-term power spectrum of a sound, based on
+a linear cosine transform of a log power spectrum on a nonlinear mel
+scale of frequency. You can compute the MFCC coefficients using
+available software like <a
+href="http://sourceforge.net/projects/jaudio/">Jaudio</a> or <a
+href="http://www.praat.org/">praat</a>, or compute them using <a
+href="https://pypi.python.org/pypi/scikits.talkbox">Talkbox</a>, a set
+of python modules for speech/signal processing.
+<p>
+The following notebook is an <a href="example_mfcc.ipynb">example</a> of how to read the wave files and
+how to compute the MFCC coefficients using the Talkbox
+package. Consider that each given sound is splitted into multiple
+temporal "windows" and that we compute the MFCC for each window. Thus,
+for every sound, you will get 13 MFCC coefficients per window. You can
+now compute features characterizing those values, e.g., the mean, the
+standard deviation, etc. 
+</p>
+<p>
+<h2 id="report">6. Experiments and report</h2>
+6.1 Man vs Woman. Use only the natural voices of men and women to
+train a neural network that recognizes the gender of the speaker. To
+select the model use the methodology illustrated in the notebook <b>model_building.ipynb</b>, that is, iterate over the number of epochs
+(learning duration) and number of hidden neurons (model
+complexity). When selecting the final model, defining the number of
+epochs for training and the number of hidden neurons, give the
+performance of the final model (crossvalidation) and the confusion matrix. 
+<p>
+6.2 Man vs. children. Proceed as explained in 6.1 but using only man
+and children voices.
+<p>
+6.3 Woman vs. children. Proceed as explained in 6.1 but using only woman
+and children voices.
+<p>
+6.4 Man vs. Woman vs. children. Proceed as explained in 6.1.
+<p>
+6.5 Natural vs. synthetic voices. Proceed as explained in 6.1.
+<p>
+6.6 Design a final experiment of your choice.
+<hr>
+6.7 Report<p>
+Provide a description of the experiments 6.1 to 6.6 performed (do not
+forget to clearly show the parameters used) and an analysis of
+the obtained results. Include the plots, confusion matrices and
+performance measures (accuracy and F1-score). 
+
+<p>
+For each one the experiments:
+<p>
+<li>Provide the images of the matrices returned by the function "k_fold_cross_validation_per_epoch"
+<li>Provide the image of the confusion matrix returned by the function "k_fold_cross_validation" (use the function imshow in pyplot)
+<li>Provide a table with the final parameters (learning_rate, momentum, epochs, number_of_hidden_neurons, MSE, accuracy, F1Score)
+<p>
+<b>Deadline for submitting the report: XX.X.17, 23h59</b>
