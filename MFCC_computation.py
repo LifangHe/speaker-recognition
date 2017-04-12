@@ -47,7 +47,7 @@ def compute_mfcc(files):
     return ceps_mean
 
 
-def create_dataset(gender_classes):
+def create_dataset(gender_classes, FILES):
     """
     Creates a dataset for training.
     Note that the returned dataset is shuffled to prevent issues during
