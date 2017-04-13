@@ -46,7 +46,7 @@ def compute_mfcc(files, nceps=13, mode='mean'):
     return ceps_mean
 
 
-def create_dataset(gender_classes, FILES, nceps=13):
+def create_dataset(gender_classes, FILES, nceps=13, mode='mean'):
     """
     Creates a dataset for training.
     Note that the returned dataset is shuffled to prevent issues during
@@ -65,7 +65,7 @@ def create_dataset(gender_classes, FILES, nceps=13):
     # create dataset
     dataset = []
     for input_gender, output_class in gender_classes:
-        ceps = compute_mfcc(FILES[input_gender][:size], nceps)
+        ceps = compute_mfcc(FILES[input_gender][:size], nceps, mode)
         for input_ceps in ceps:
             dataset.append(numpy.append(input_ceps, output_class))
     dataset = numpy.array(dataset)
