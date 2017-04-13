@@ -119,21 +119,19 @@ def print_mse_train_test(mse_train, mse_test, n_neurons, figsize=(16, 8), aspect
     pl.tight_layout()
 
 
-def print_coeff_boxplot(keys, FILES):
+def print_coeff_boxplot(keys, FILES, nceps=13, ylim=(-3.5, 20)):
     NUM_PLOTS = len(keys)
     NUM_COLS = 3
     NUM_ROWS = math.ceil(NUM_PLOTS / float(NUM_COLS))
 
     pl.figure(figsize=(15, 5 * NUM_ROWS))
 
-    Y_MIN = -3.5
-    Y_MAX = 20
     X_LABEL = 'coefficients'
 
     for plot_index, s_class in enumerate(sorted(keys)):
-        values = compute_mfcc(FILES[s_class])
+        values = compute_mfcc(FILES[s_class], nceps)
         pl.subplot(NUM_ROWS, NUM_COLS, plot_index + 1)
-        pl.ylim(Y_MIN, Y_MAX)
+        pl.ylim(ylim)
         pl.boxplot(values)
         pl.title(s_class)
         pl.xlabel(X_LABEL)
